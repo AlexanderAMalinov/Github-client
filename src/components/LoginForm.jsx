@@ -7,6 +7,10 @@ export const LoginForm = (props) => {
     props.handleSubmit(personalKey);
   };
 
+  if (props.isAuthCompleted) {
+    setValue('');
+  }
+
   return (
     <form onSubmit={wrappedSubmit} className="login-form">
       <h3 className="login-form__header">Login in to Github</h3>

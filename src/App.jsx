@@ -21,8 +21,8 @@ export const App = () => {
   };
 
   if (isAuthCompleted) {
-    return <UserForm userData={userData}/>;
+    return <UserForm userData={userData} client={gitHubClient}/>;
   }
 
-  return <LoginForm handleSubmit={handleLoginSubmit}/>;
+  return <LoginForm handleSubmit={handleLoginSubmit} isAuthCompleted={isAuthCompleted}/>;
 };
