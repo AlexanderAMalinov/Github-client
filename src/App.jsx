@@ -21,7 +21,7 @@ export const App = () => {
   };
 
   if (isAuthCompleted) {
-    return <UserForm/>;
+    return <UserForm userData={userData}/>;
   }
 
   return <LoginForm handleSubmit={handleLoginSubmit}/>;
