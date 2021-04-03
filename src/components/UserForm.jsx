@@ -1,34 +1,18 @@
 import React, { useState } from 'react';
 
-const getUserDataChanges = (previousData, actualData) => {
-  const notMatchedFields = Object.entries(previousData).reduce((fields, dataItem) => {
-    const [key, value] = dataItem;
-    const propIsEqual = actualData[key] === value;
-    if (!propIsEqual) {
-      return [...fields, { key, value: actualData[key] }];
-    }
-    return fields;
-  }, []);
-
-  return notMatchedFields;
-};
-
 export const UserForm = (props) => {
-  const { client, userData } = props;
+  const { client, userData, handleSubmit } = props;
   const [nameField, setName] = useState(userData.name);
   const [blogField, setBlog] = useState(userData.blog);
   const [bioField, setBio] = useState(userData.bio);
 
-  const handleSubmit = (event) => {
+  const wrappedSubmit = (event) => {
     event.preventDefault();
-    const { name, blog, bio } = userData;
-    const actualData = { name: nameField, blog: blogField, bio: bioField };
-    const changes = getUserDataChanges({ name, blog, bio }, actualData);
-    console.log(changes);
+    handleSubmit({ name: nameField, blog: blogField, bio: bioField });
   };
   
   return (
-    <form onSubmit={handleSubmit} className="login-form">
+    <form onSubmit={wrappedSubmit} className="login-form">
       <h3 className="login-form__header">Profile</h3>
       <div className="login-form__form-group">
         <label htmlFor='username'>Name</label>
