@@ -22,7 +22,12 @@ export const App = (props) => {
         </>
       );
     case appStates.REPO_LIST:
-      return <RepoList/>
+      return (
+        <>
+          <Toolbar/>
+          <RepoList/>
+        </>
+      );
   }
 };
 

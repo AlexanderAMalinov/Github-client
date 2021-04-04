@@ -4,7 +4,6 @@ import { Octokit } from '@octokit/rest';
 import { updateUserData, setClient } from '../actions/index.js';
 
 const actionCreators = { updateUserData, setClient };
-const mapStateToProps = ({ authCompleted }) => ({ authCompleted });
 
 export const LoginForm = (props) => {
   const [personalKey, setValue] = useState('');
@@ -17,10 +16,6 @@ export const LoginForm = (props) => {
     updateUserData();
   };
 
-  if (props.isAuthCompleted) {
-    setValue('');
-  }
-
   return (
     <form onSubmit={handleSubmit} className="login-form">
       <h3 className="login-form__header">Login in to Github</h3>
@@ -32,4 +27,4 @@ export const LoginForm = (props) => {
   );
 };
 
-export default connect(mapStateToProps, actionCreators)(LoginForm);
+export default connect(null, actionCreators)(LoginForm);

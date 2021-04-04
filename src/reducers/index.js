@@ -19,6 +19,7 @@ const appState = handleActions({
 
 const repoList = handleActions({
   [actions.updateRepoList]: (state, { payload }) => payload,
+  [actions.setAppState]: (state, { payload }) => payload === appStates.LOGIN ? [] : state
 }, []);
 
 export default combineReducers({
