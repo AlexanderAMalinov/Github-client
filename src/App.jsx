@@ -3,21 +3,27 @@ import { connect } from 'react-redux';
 import LoginForm from './components/LoginForm.jsx';
 import Toolbar from './components/Toolbar.jsx';
 import UserForm from './components/UserForm.jsx';
+import RepoList from './components/RepoList.jsx';
+import { appStates } from './meta.js';
 
-const mapStateToProps = ({ authCompleted }) => ({ authCompleted });
+const mapStateToProps = ({ appState }) => ({ appState });
 
 export const App = (props) => {
-  const { authCompleted } = props;
-  if (authCompleted) {
-    return (
-      <>
-        <Toolbar/>
-        <UserForm/>
-      </>
-    );
-  }
+  const { appState } = props;
 
-  return <LoginForm/>;
+  switch (appState) {
+    case appStates.LOGIN:
+      return <LoginForm/>;
+    case appStates.USER_EDIT:
+      return (
+        <>
+          <Toolbar/>
+          <UserForm/>
+        </>
+      );
+    case appStates.REPO_LIST:
+      return <RepoList/>
+  }
 };
 
 export default connect(mapStateToProps)(App);
