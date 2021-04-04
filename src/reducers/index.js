@@ -1,21 +1,24 @@
 import { combineReducers } from 'redux';
 import { handleActions } from 'redux-actions';
 import * as actions from '../actions/index.js';
+import { appStates } from '../meta.js';
 
 const gitHubClient = handleActions({
   [actions.setClient]: (state, { payload }) => payload,
+  [actions.setAppState]: (state, { payload }) => payload === appStates.LOGIN ? {} : state
 }, {});
 
 const userData = handleActions({
-  [actions.setUserData]: (state, { payload }) => ({ ...payload })
+  [actions.setUserData]: (state, { payload }) => ({ ...payload }),
+  [actions.setAppState]: (state, { payload }) => payload === appStates.LOGIN ? {} : state
 }, {});
 
-const authCompleted = handleActions({
-  [actions.setAuthStatus]: (state, { payload }) => payload,
-}, false);
+const appState = handleActions({
+  [actions.setAppState]: (state, { payload }) => payload,
+}, appStates.LOGIN);
 
 export default combineReducers({
   userData,
-  authCompleted,
+  appState,
   gitHubClient
 });

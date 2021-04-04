@@ -1,5 +1,6 @@
 import { createAction } from 'redux-actions';
 import { getUserDataChanges } from '../services/FormChangesService.js';
+import { appStates } from '../meta.js';
 
 // export const requestPending = createAction('REQUEST_PENDING');
 // export const requestSuccess = createAction('REQUEST_SUCCESS');
@@ -7,14 +8,14 @@ import { getUserDataChanges } from '../services/FormChangesService.js';
 
 export const setUserData = createAction('SET_USER_DATA');
 export const setClient = createAction('SET_CLIENT');
-export const setAuthStatus = createAction('SET_AUTH_STATUS');
+export const setAppState = createAction('SET_APP_STATE');
 
 export const updateUserData = () => async (dispatch, getState) => {
   const { gitHubClient } = getState();
   try {
     const { data } = await gitHubClient.request("/user");
     dispatch(setUserData(data));
-    dispatch(setAuthStatus(true));
+    dispatch(setAppState(appStates.USER_EDIT));
   } catch(error) {
    // Notification
   }
