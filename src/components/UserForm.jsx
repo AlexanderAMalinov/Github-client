@@ -1,18 +1,23 @@
 import React, { useState } from 'react';
+import { connect } from 'react-redux';
+import { sendFieldsChanges, updateUserData } from '../actions/index.js';
+
+const actionCreators = { updateUserData, sendFieldsChanges };
+const mapStateToProps = ({ userData }) => ({ userData });
 
 export const UserForm = (props) => {
-  const { client, userData, handleSubmit } = props;
+  const { userData, sendFieldsChanges } = props;
   const [nameField, setName] = useState(userData.name);
   const [blogField, setBlog] = useState(userData.blog);
   const [bioField, setBio] = useState(userData.bio);
 
-  const wrappedSubmit = (event) => {
+  const handleSubmit = (event) => {
     event.preventDefault();
-    handleSubmit({ name: nameField, blog: blogField, bio: bioField });
+    sendFieldsChanges({ name: nameField, blog: blogField, bio: bioField });
   };
   
   return (
-    <form onSubmit={wrappedSubmit} className="login-form">
+    <form onSubmit={handleSubmit} className="login-form">
       <h3 className="login-form__header">Profile</h3>
       <div className="login-form__form-group">
         <label htmlFor='username'>Name</label>
@@ -30,3 +35,5 @@ export const UserForm = (props) => {
     </form>
   );
 };
+
+export default connect(mapStateToProps, actionCreators)(UserForm);
