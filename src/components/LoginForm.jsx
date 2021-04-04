@@ -27,7 +27,7 @@ export const LoginForm = (props) => {
       <div className="login-form__form-group">
         <input onChange={(event) => setValue(event.target.value)} className="login-form__form-group__field" id="PAT" type="text"/>
       </div>
-      <button className="login-form__submit-button" type="submit">Submit</button>
+      <button className="button login-form__submit-button" type="submit">Submit</button>
     </form>     
   );
 };

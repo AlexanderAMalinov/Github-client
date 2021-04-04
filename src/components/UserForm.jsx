@@ -31,7 +31,7 @@ export const UserForm = (props) => {
         <label htmlFor='bio'>Bio</label>
         <textarea onChange={(event) => setBio(event.target.value)} value={bioField} className="login-form__form-group__field" id="bio" type="text"/>
       </div>
-      <button className="login-form__submit-button" type="submit">Submit</button>
+      <button className="button login-form__submit-button" type="submit">Edit profile</button>
     </form>
   );
 };
