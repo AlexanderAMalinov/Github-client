@@ -1,4 +1,5 @@
 import path from 'path';
+import webpack from 'webpack';
 import { fileURLToPath } from 'url';
 import HtmlWebPackPlugin from 'html-webpack-plugin';
 
@@ -47,6 +48,9 @@ export default {
     ],
   },
   plugins: [
+    new webpack.SourceMapDevToolPlugin({
+      filename: '[name].js.map',
+    }),
     new HtmlWebPackPlugin({
       template: './src/index.html',
     }),
