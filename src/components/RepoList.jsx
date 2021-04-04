@@ -17,7 +17,7 @@ const RepoList = (props) => {
 
   return (
     <ul className='repo-list'>
-      {repoList.map(item => <ListItem key={_.uniqueId()} repoName={item.name} stars={item.stargazers_count}/>)}
+      {repoList.map(item => <ListItem key={_.uniqueId()} repoName={item.full_name} stars={item.stargazers_count}/>)}
     </ul>
   );
 };
