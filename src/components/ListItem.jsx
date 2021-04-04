@@ -8,7 +8,7 @@ export const ListItem = (props) => (
     <div className="list-item__name-star-container">
       <div>{props.repoName}</div>
       <div>
-      <img src='../../images/star.png' className='list-item__star'/>
+        <img src='../../images/star.png' className='list-item__star'/>
         <span>{props.stars}</span>
       </div>
     </div>

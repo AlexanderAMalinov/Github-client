@@ -1,6 +1,5 @@
 import React, { useState } from 'react';
 import { connect } from 'react-redux';
-import { Octokit } from '@octokit/rest';
 import { updateUserData, setClient } from '../actions/index.js';
 
 const actionCreators = { updateUserData, setClient };
@@ -11,8 +10,7 @@ export const LoginForm = (props) => {
 
   const handleSubmit = (event) => {
     event.preventDefault();
-    const client = new Octokit({ auth: personalKey });
-    setClient(client);
+    setClient(personalKey);
     updateUserData();
   };
 
