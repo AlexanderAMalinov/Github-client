@@ -1,4 +1,6 @@
 import React from 'react';
+import '../../images/star.png';
+import '../../images/repo.png';
 
 export const ListItem = (props) => (
   <li className='repo-list__list-item'>
