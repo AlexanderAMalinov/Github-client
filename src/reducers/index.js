@@ -17,8 +17,13 @@ const appState = handleActions({
   [actions.setAppState]: (state, { payload }) => payload,
 }, appStates.LOGIN);
 
+const repoList = handleActions({
+  [actions.updateRepoList]: (state, { payload }) => payload,
+}, []);
+
 export default combineReducers({
   userData,
   appState,
-  gitHubClient
+  gitHubClient,
+  repoList
 });
