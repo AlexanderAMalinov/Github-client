@@ -14,7 +14,7 @@ const Toolbar = (props) => {
 
   return (
     <div className="toolbar">
-      <button onClick={() => props.setAppState(appStates.LOGIN)} className="button">Logout</button>
+      <button onClick={() => props.setAppState(appStates.LOGIN)} className="button">Log out</button>
       {props.appState !== appStates.REPO_LIST
         ? <button onClick={handleListTransition} className="button">Repositories</button>
         : <button onClick={() => props.setAppState(appStates.USER_EDIT)} className="button">Back to profile</button>

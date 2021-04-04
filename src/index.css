@@ -77,5 +77,21 @@
 }
 
 .repo-list__list-item {
+    display: flex;
+    margin: 0px 5px 20px 5px;
     list-style-type: none;
+}
+
+.list-item__name-star-container {
+    margin-left: 10px;
+}
+
+.list-item__icon {
+    width: 35px;
+    height: 35px;
+}
+
+.list-item__star {
+    width: 20px;
+    height: 20px;
 }
