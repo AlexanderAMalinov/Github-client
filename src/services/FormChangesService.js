@@ -3,10 +3,10 @@ export const getUserDataChanges = (previousData, actualData) => {
     const [key, value] = dataItem;
     const propIsEqual = actualData[key] === value;
     if (!propIsEqual) {
-      return [...fields, { key, value: actualData[key] }];
+      fields[key] = actualData[key];
     }
     return fields;
-  }, []);
+  }, {});
 
-  return notMatchedFields;
+  return Object.keys(notMatchedFields).length === 0 ? null : notMatchedFields;
 };

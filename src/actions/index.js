@@ -26,9 +26,12 @@ export const sendFieldsChanges = (actualFieldsData) => async (dispatch, getState
     blog: userData.blog
   }, actualFieldsData);
 
-  const preparedChanges = changes.reduce((acc, change) => ({ ...acc, [change.key]: change.value }), {});
+  if (!changes) {
+    return;
+  }
+  
   try {
-    await gitHubClient.rest.users.updateAuthenticated(preparedChanges);
+    await gitHubClient.rest.users.updateAuthenticated(changes);
     dispatch(setUserData({...userData, ...actualFieldsData }));
   } catch(error) {
     // Notification
